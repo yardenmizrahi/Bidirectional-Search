@@ -1,4 +1,1 @@
-﻿  main.cpp
-C:\Users\yarde\OneDrive\שולחן העבודה\Graphics\Graphics\main.cpp(40,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\yarde\OneDrive\שולחן העבודה\Graphics\Graphics\main.cpp(308,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Graphics.vcxproj -> C:\Users\yarde\OneDrive\שולחן העבודה\Graphics\Debug\Graphics.exe
+﻿  Graphics.vcxproj -> C:\Users\yarde\OneDrive\שולחן העבודה\Graphics\Debug\Graphics.exe

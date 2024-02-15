@@ -12,5 +12,7 @@ public:
 	int getRow() { return row; }
 	int getCol() { return col; }
 	Cell* getParent() { return parent; }
+	void setParent(Cell* p) { parent = p; }
+
 };
 

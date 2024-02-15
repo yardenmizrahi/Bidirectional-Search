@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
@@ -127,6 +126,19 @@ void DrawMaze()
 		}
 }
 
+Cell* findMatchingPointer(queue <Cell*> x, int row, int col) {
+	// Search in queue x
+	while (!x.empty()) {
+		Cell* currentPointer = x.front();
+		x.pop();
+		if (currentPointer->getRow() == row && currentPointer->getCol() == col) {
+			return currentPointer;
+		}
+	}
+	// Pointer not found in either queue
+	return nullptr;
+}
+
 
 void RestorePath(Cell* pc)
 {
@@ -137,21 +149,7 @@ void RestorePath(Cell* pc)
 	}
 
 }
-/*
-Cell* findMatchingPointer(queue <Cell*> x, int row, int col) {
-	// Search in queue x
-	while (!x.empty()) {
-		Cell* currentPointer = x.front();
-		x.pop();
-		if (currentPointer->getRow() == row && currentPointer->getCol() == col) {
-			RestorePath(currentPointer);
-			return currentPointer;
-		}
-	}
-	// Pointer not found in either queue
-	return nullptr;
-}
-*/
+
 
 // BFS a cell on row,col can be either WHITE or DARK GRAY
 bool CheckNeighbour(int row, int col, Cell* pCurrent)
@@ -160,8 +158,9 @@ bool CheckNeighbour(int row, int col, Cell* pCurrent)
 	if (maze[row][col] == DARK_GRAY)
 	{
 		runBFS = false;
-		//findMatchingPointer(reverse_dark_grays, pCurrent->getRow(), pCurrent->getCol());
 		RestorePath(pCurrent);
+		Cell* rev_pc = findMatchingPointer(reverse_dark_grays, row, col);
+		RestorePath(rev_pc);
 		return false;
 	}
 	else // must be "White Neighbour" - SPACE
@@ -180,8 +179,9 @@ bool CheckNeighbourReverse(int row, int col, Cell* pCurrent)
 	if (maze[row][col] == GRAY)
 	{
 		runBFS = false;
-		//findMatchingPointer(grays, pCurrent->getRow(), pCurrent->getCol());
 		RestorePath(pCurrent);
+		Cell* rev_pc = findMatchingPointer(grays, row, col);
+		RestorePath(rev_pc);
 		return false;
 	}
 	else // must be "White Neighbour" - SPACE
@@ -323,3 +323,4 @@ void main(int argc, char* argv[])
 
 	glutMainLoop();
 }
+
