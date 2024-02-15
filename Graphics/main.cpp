@@ -310,13 +310,13 @@ void main(int argc, char* argv[])
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutInitWindowSize(900, 900);
 	glutInitWindowPosition(400, 100);
-	glutCreateWindow("BFS Example");
+	glutCreateWindow("Bi directional BFS");
 
 	glutDisplayFunc(display); // refresh function
 	glutIdleFunc(idle);  // updates function
 	// menu
 	glutCreateMenu(menu);
-	glutAddMenuEntry("run BFS", 1);
+	glutAddMenuEntry("run Bidirectional BFS", 1);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	init();
